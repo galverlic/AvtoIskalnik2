@@ -29,7 +29,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
-	implementation 'org.hibernate:hibernate-validator:5.2.4.Final'
+	implementation 'org.hibernate:hibernate-validator:6.1.2.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 
 

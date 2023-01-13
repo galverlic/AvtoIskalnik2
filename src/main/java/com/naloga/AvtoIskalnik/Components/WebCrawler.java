@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class WebCrawler {
 
@@ -39,17 +40,26 @@ public class WebCrawler {
     }
 
     public List<Avto> crawlAvtoNet(){
-        log.info("Crawling avto.net...");
+       /* log.info("Crawling avto.net...");
         List<Avto> ads = new ArrayList<>();
-        String url = "https://www.avto.net/rezultati.aspx";
-        Document document = null;
+
+       */ //}
+
+
+        String url = "https://www.avto.net/Ads/results.asp?znamka=&model=&modelID=&tip=&znamka2=&model2=&tip2=&znamka3=&model3=&tip3=&cenaMin=0&cenaMax=999999&letnikMin=0&letnikMax=2090&bencin=0&starost2=999&oblika=&ccmMin=0&ccmMax=99999&mocMin=&mocMax=&kmMin=0&kmMax=9999999&kwMin=0&kwMax=999&motortakt=&motorvalji=&lokacija=0&sirina=&dolzina=&dolzinaMIN=&dolzinaMAX=&nosilnostMIN=&nosilnostMAX=&lezisc=&presek=&premer=&col=&vijakov=&EToznaka=&vozilo=&airbag=&barva=&barvaint=&EQ1=1000000000&EQ2=1000000000&EQ3=1000000000&EQ4=100000000&EQ5=1000000000&EQ6=1000000000&EQ7=1110100120&EQ8=101000000&EQ9=1000000000&KAT=1010000000&PIA=&PIAzero=&PIAOut=&PSLO=&akcija=&paketgarancije=0&broker=&prikazkategorije=&kategorija=&ONLvid=&ONLnak=&zaloga=10&arhiv=&presort=&tipsort=&stran=";
         try {
-            document = Jsoup.connect(url).get();
+            Map<String, String> headers = new HashMap<>();
+            headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36");
+            headers.put("accept-language","en-US,en;q=0.9");
+            Document doc = Jsoup.connect(url).headers(headers).get();
+            doc.select("p").forEach(System.out::println);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Elements avtoOglasi = document.select("div.container.m-0.mb-3");
-        for (Element avtoOglas : avtoOglasi) {
+
+
+        //Elements avtoOglasi = document.select("div.container.m-0.mb-3");
+        /*for (Element avtoOglas : avtoOglasi) {
             Avto ad = new Avto();
             ad.setSource("avto.net");
             Element znamka = avtoOglas.select("div.make").first();
@@ -92,9 +102,10 @@ public class WebCrawler {
             ad.setLastVisited(String.valueOf(LocalDateTime.now()));
             ad.setActive(true);
             ads.add(ad);
-        }
-        avtoRepository.saveAll(ads);
-        return ads;
+        }*/
+       // avtoRepository.saveAll(ads);
+        //return ads;
+        return null;
     }
 
     private List<Avto>crawlDoberAvtoSi() throws IOException {

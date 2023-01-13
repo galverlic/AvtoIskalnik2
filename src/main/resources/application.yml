@@ -22,13 +22,9 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-springdoc:
-  swagger-ui:
-    path: /api/AvtoIskalnik/swagger/swagger-ui.html
-  api-docs:
-    path: /api/AvtoIskalnik/openapi/v3/api-docs
 
-swagger-custom:
-  app-name: ${CUSTOM_APP_NAME:Payout Service API}
-  app-version: ${CUSTOM_APP_VERSION:v0.0.1}
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
