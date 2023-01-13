@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+swagger:
+  enabled: true
+
+
+spring:
+  datasource:
+    username: uporabnik
+    password: geslo
+    url: jdbc:postgresql://localhost:5432/avtoIskalnik
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: false
+  session:
+    store-type: none
+  main:
+    allow-bean-definition-overriding: true
+
+springdoc:
+  swagger-ui:
+    path: /api/AvtoIskalnik/swagger/swagger-ui.html
+  api-docs:
+    path: /api/AvtoIskalnik/openapi/v3/api-docs
+
+swagger-custom:
+  app-name: ${CUSTOM_APP_NAME:Payout Service API}
+  app-version: ${CUSTOM_APP_VERSION:v0.0.1}
+
